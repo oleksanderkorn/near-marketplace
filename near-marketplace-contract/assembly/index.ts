@@ -54,7 +54,8 @@ export function buyProduct(productId: string): void {
     "marketplace.lkskrnk.testnet",
     "onNftMinted",
     wrapper.encode(),
-    10_000_000_000_000
+    10_000_000_000_000,
+    context.attachedDeposit
   );
   promise.returnAsResult();
 }
