@@ -1,5 +1,18 @@
-import { context, ContractPromiseBatch } from "near-sdk-as";
-import { Product, listedProducts } from "./model";
+import { context, ContractPromise, ContractPromiseBatch } from "near-sdk-as";
+import { Product, listedProducts, NFTData, ProductWrapper } from "./model";
+
+const NFT_CONTRACT = "nftmarket.lkskrnk.testnet";
+const NFT_CONTRACT_MINT_NFT = "nft_mint";
+
+function mintNft(nftData: NFTData): ContractPromise {
+  return ContractPromise.create(
+    NFT_CONTRACT,
+    NFT_CONTRACT_MINT_NFT,
+    nftData.encode(),
+    10_000_000_000_000,
+    context.attachedDeposit
+  );
+}
 
 export function setProduct(product: Product): void {
   let storedProduct = listedProducts.get(product.id);
@@ -22,10 +35,40 @@ export function buyProduct(productId: string): void {
   if (product == null) {
     throw new Error("product not found");
   }
-  if (product.price.toString() != context.attachedDeposit.toString()) {
-    throw new Error("attached deposit should equal to the product's price");
+  if (product.buyers.indexOf(context.sender) > -1) {
+    throw new Error(
+      "You have already mint this NFT. You can only mint an NFT once."
+    );
   }
-  ContractPromiseBatch.create(product.owner).transfer(context.attachedDeposit);
-  product.incrementSoldAmount();
-  listedProducts.set(product.id, product);
+  if (product.price > context.attachedDeposit) {
+    throw new Error(
+      "attached deposit should not be less then to the product's price + storage deposit gas price"
+    );
+  }
+  let nftData: NFTData = NFTData.fromProduct(product);
+  const wrapper = new ProductWrapper();
+  wrapper.tokenId = nftData.token_id;
+  wrapper.product = product;
+
+  const promise = mintNft(nftData).then(
+    "marketplace.lkskrnk.testnet",
+    "onNftMinted",
+    wrapper.encode(),
+    10_000_000_000_000
+  );
+  promise.returnAsResult();
+}
+
+export function onNftMinted(product: Product, tokenId: string): void {
+  let results = ContractPromise.getResults();
+  let addItemResult = results[0];
+  if (addItemResult.failed) {
+    throw new Error(`Failed to mint NFT with Token ID ${tokenId}.`);
+  } else {
+    ContractPromiseBatch.create(product.owner).transfer(
+      context.attachedDeposit
+    );
+    product.incrementSoldAmount();
+    listedProducts.set(product.id, product);
+  }
 }

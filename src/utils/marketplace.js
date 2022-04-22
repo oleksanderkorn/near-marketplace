@@ -3,16 +3,16 @@ import { parseNearAmount } from "near-api-js/lib/utils/format";
 
 const GAS = 100000000000000;
 
-export function createProduct(product) {
+export function createNFT(product) {
   product.id = uuid4();
   product.price = parseNearAmount(product.price + "");
   return window.contract.setProduct({ product });
 }
 
-export function getProducts() {
+export function getNFTs() {
   return window.contract.getProducts();
 }
 
-export async function buyProduct({ id, price }) {
+export async function mintNFT({ id, price }) {
   await window.contract.buyProduct({ productId: id }, GAS, price);
 }

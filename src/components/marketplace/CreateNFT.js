@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Modal, Form, FloatingLabel } from "react-bootstrap";
 
-const AddProduct = ({ save }) => {
+const CreateNFT = ({ save }) => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
   const [price, setPrice] = useState(0);
-  const isFormFilled = () => name && image && description && location && price;
+  const isFormFilled = () => name && image && description && price;
 
   const [show, setShow] = useState(false);
 
@@ -22,17 +21,17 @@ const AddProduct = ({ save }) => {
         className="rounded-pill px-0"
         style={{ width: "38px" }}
       >
-        <i class="bi bi-plus"></i>
+        <i className="bi bi-plus"></i>
       </Button>
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>New Product</Modal.Title>
+          <Modal.Title>Create NFT</Modal.Title>
         </Modal.Header>
         <Form>
           <Modal.Body>
             <FloatingLabel
               controlId="inputName"
-              label="Product name"
+              label="NFT name"
               className="mb-3"
             >
               <Form.Control
@@ -40,7 +39,7 @@ const AddProduct = ({ save }) => {
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
-                placeholder="Enter name of product"
+                placeholder="Enter name of NFT"
               />
             </FloatingLabel>
             <FloatingLabel
@@ -71,19 +70,6 @@ const AddProduct = ({ save }) => {
               />
             </FloatingLabel>
             <FloatingLabel
-              controlId="inputLocation"
-              label="Location"
-              className="mb-3"
-            >
-              <Form.Control
-                type="text"
-                placeholder="Location"
-                onChange={(e) => {
-                  setLocation(e.target.value);
-                }}
-              />
-            </FloatingLabel>
-            <FloatingLabel
               controlId="inputPrice"
               label="Price"
               className="mb-3"
@@ -110,13 +96,12 @@ const AddProduct = ({ save }) => {
                 name,
                 image,
                 description,
-                location,
                 price,
               });
               handleClose();
             }}
           >
-            Save product
+            Create and list NFT
           </Button>
         </Modal.Footer>
       </Modal>
@@ -124,8 +109,8 @@ const AddProduct = ({ save }) => {
   );
 };
 
-AddProduct.propTypes = {
+CreateNFT.propTypes = {
   save: PropTypes.func.isRequired,
 };
 
-export default AddProduct;
+export default CreateNFT;

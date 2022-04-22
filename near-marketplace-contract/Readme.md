@@ -47,3 +47,5 @@ near create-account buyer.lkskrnk.testnet --masterAccount lkskrnk.testnet --init
 near call marketplace.lkskrnk.testnet buyProduct '{"productId": "0"}' --depositYocto=1000000000000000000000000 --accountId=buyer.lkskrnk.testnet
 near view marketplace.lkskrnk.testnet getProduct '{"id": "0"}'
 ```
+
+--accountId

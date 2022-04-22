@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import { utils } from "near-api-js";
 import { Card, Button, Col, Badge, Stack } from "react-bootstrap";
 
-const Product = ({ product, buy }) => {
-  const { id, price, name, description, sold, location, image, owner } =
+const NFT = ({ product, buy }) => {
+  const account = window.walletConnection.account();
+  const { id, price, name, description, sold, location, image, owner, buyers } =
     product;
 
   const triggerBuy = () => {
@@ -16,9 +17,11 @@ const Product = ({ product, buy }) => {
       <Card className=" h-100">
         <Card.Header>
           <Stack direction="horizontal" gap={2}>
-            <span className="font-monospace text-secondary">{owner}</span>
+            <span className="font-monospace text-secondary">
+              Listed by: {owner}
+            </span>
             <Badge bg="secondary" className="ms-auto">
-              {sold} Sold
+              {sold} Minted
             </Badge>
           </Stack>
         </Card.Header>
@@ -31,22 +34,28 @@ const Product = ({ product, buy }) => {
           <Card.Text className="text-secondary">
             <span>{location}</span>
           </Card.Text>
-          <Button
-            variant="outline-dark"
-            onClick={triggerBuy}
-            className="w-100 py-3"
-          >
-            Buy for {utils.format.formatNearAmount(price)} NEAR
-          </Button>
+          {account.accountId && buyers.indexOf(account.accountId) === -1 ? (
+            <Button
+              variant="outline-dark"
+              onClick={triggerBuy}
+              className="w-100 py-3"
+            >
+              Mint NFT for {utils.format.formatNearAmount(price)} NEAR
+            </Button>
+          ) : (
+            <Button variant="outline-dark" className="w-100 py-3">
+              NFT already bought!
+            </Button>
+          )}
         </Card.Body>
       </Card>
     </Col>
   );
 };
 
-Product.propTypes = {
+NFT.propTypes = {
   product: PropTypes.instanceOf(Object).isRequired,
   buy: PropTypes.func.isRequired,
 };
 
-export default Product;
+export default NFT;
