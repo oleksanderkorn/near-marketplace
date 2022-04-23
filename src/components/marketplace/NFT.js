@@ -12,6 +12,10 @@ const NFT = ({ product, buy }) => {
     buy(id, price);
   };
 
+  const getNftLink = (accountId) => {
+    return `https://wallet.testnet.near.org/nft-detail/nftmarket.lkskrnk.testnet/${accountId}-${id}`;
+  };
+
   return (
     <Col key={id}>
       <Card className=" h-100">
@@ -43,8 +47,14 @@ const NFT = ({ product, buy }) => {
               Mint NFT for {utils.format.formatNearAmount(price)} NEAR
             </Button>
           ) : (
-            <Button variant="outline-dark" className="w-100 py-3">
-              NFT already bought!
+            <Button
+              variant="outline-dark"
+              className="w-100 py-3"
+              target="_blank"
+              link="noreferrer"
+              href={getNftLink(account.accountId)}
+            >
+              NFT minted, click to view!
             </Button>
           )}
         </Card.Body>
