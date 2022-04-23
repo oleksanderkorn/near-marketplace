@@ -101,7 +101,7 @@ const CreateNFT = ({ save }) => {
               handleClose();
             }}
           >
-            Create and list NFT
+            List NFT template for 0.1 NEAR
           </Button>
         </Modal.Footer>
       </Modal>

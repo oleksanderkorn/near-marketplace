@@ -1,8 +1,14 @@
-import { context, ContractPromise, ContractPromiseBatch } from "near-sdk-as";
+import {
+  context,
+  ContractPromise,
+  ContractPromiseBatch,
+  u128,
+} from "near-sdk-as";
 import { Product, listedProducts, NFTData, ProductWrapper } from "./model";
 
 const NFT_CONTRACT = "nftmarket.lkskrnk.testnet";
 const NFT_CONTRACT_MINT_NFT = "nft_mint";
+const LISTING_FEE = u128.fromString("100000000000000000000000");
 
 function mintNft(nftData: NFTData): ContractPromise {
   return ContractPromise.create(
@@ -15,6 +21,11 @@ function mintNft(nftData: NFTData): ContractPromise {
 }
 
 export function setProduct(product: Product): void {
+  if (context.attachedDeposit < LISTING_FEE) {
+    throw new Error(
+      "Attached deposit should cover the Listing Fee of 0.1 NEAR"
+    );
+  }
   let storedProduct = listedProducts.get(product.id);
   if (storedProduct !== null) {
     throw new Error(`a product with ${product.id} already exists`);

@@ -6,7 +6,7 @@ const GAS = 100000000000000;
 export function createNFT(product) {
   product.id = uuid4();
   product.price = parseNearAmount(product.price + "");
-  return window.contract.setProduct({ product });
+  return window.contract.setProduct({ product }, GAS, parseNearAmount("0.1"));
 }
 
 export function getNFTs() {

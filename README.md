@@ -1,9 +1,10 @@
 # NEAR Development 101 Challenge Project
 
 Demo project is accessible at [https://oleksanderkorn.github.io/near-marketplace](https://oleksanderkorn.github.io/near-marketplace).
-The project allows people to list a new NFT template which can be bought(minted) by everyone else but only once.
-If user would like to list a new item he creates the new item and pays one-tome listing fee of 0.1 NEAR to the markeplace contract.
-If a user wants to mint an NFT listed in the marketplace, he will pay the mint price to the owner of that NFT Template.
+The project allows people to list a new NFT template that can be bought(minted) by everyone else but only once.
+If the user would like to list a new item he creates the new item, sets the Title, Description, and the media link of the future NFTs,
+and pays a one-time listing fee of 0.1 NEAR to the marketplace contract.
+If another user wants to mint any NFT listed in the marketplace, he should pay the mint price to the owner of that NFT Template.
 
 # Marketplace Smart Contract
 
@@ -43,7 +44,7 @@ cd marketplace-contract
 yarn asb
 export MARKETPLACE_CONTRACT=marketplace.lkskrnk.testnet
 near create-account $MARKETPLACE_CONTRACT --masterAccount lkskrnk.testnet --initialBalance 5
-near deploy --accountId=$MARKETPLACE_CONTRACT --wasmFile=build/release/near-marketplace-contract.wasm
+near deploy --accountId=$MARKETPLACE_CONTRACT --wasmFile=build/release/marketplace-contract.wasm
 ```
 
 ### Build and deploy UI
