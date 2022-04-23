@@ -23,18 +23,19 @@ const NFTList = () => {
   };
 
   const createNewNFT = async (data) => {
-    try {
-      setLoading(true);
-      createNFT(data).then((resp) => {
+    setLoading(true);
+    createNFT(data).then(
+      (resp) => {
+        toast(<NotificationSuccess text="Product added successfully." />);
         listNFTs();
-      });
-      toast(<NotificationSuccess text="Product added successfully." />);
-    } catch (error) {
-      console.log({ error });
-      toast(<NotificationError text="Failed to create a product." />);
-    } finally {
-      setLoading(false);
-    }
+        setLoading(false);
+      },
+      (error) => {
+        console.log({ error });
+        toast(<NotificationError text="Failed to create a product." />);
+        setLoading(false);
+      }
+    );
   };
 
   const buy = async (id, price) => {
