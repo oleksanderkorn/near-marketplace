@@ -508,9 +508,9 @@ assemblyscript@^0.18.25, assemblyscript@^0.18.31:
     long "^4.0.0"
 
 assemblyscript@^0.20.4:
-  version "0.20.4"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.20.4.tgz#42bab6a29eee56995000a02beb9c5d36a978c55a"
-  integrity sha512-ku/6G/Js5T3MGqQesaaBsZQA7EYi/hDIiR5EPEATHfJi/CTvmO7675SvRqUsk+RFtnjzEldZQk1VvQUq2Hx/xQ==
+  version "0.20.5"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.20.5.tgz#1625469f5a98ea0ca77cba60b975981f2f631c5f"
+  integrity sha512-BVp40t2sx2YPNHl2RynvjMDEz9tQxAHpxYz4D7uEkoQ1VQVQQCAsD1kXusKVf94+FYz2PSvKtsfK2/0RzYVbNw==
   dependencies:
     binaryen "106.0.0-nightly.20220320"
     long "^5.2.0"

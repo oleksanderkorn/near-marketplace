@@ -1,10 +1,4 @@
-import {
-  PersistentUnorderedMap,
-  u128,
-  context,
-  PersistentMap,
-  PersistentSet,
-} from "near-sdk-as";
+import { PersistentUnorderedMap, u128, context } from "near-sdk-as";
 
 @nearBindgen
 export class NFTMetadata {

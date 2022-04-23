@@ -23,3 +23,35 @@ The demo nft market contract is deployed to `nftmarket.lkskrnk.testnet`.
 
 The frontend is using same React example adapted to the needs of the NFT marketplace, it shows if the NFT jas been already minted by the user,
 and has some updated layout, new icons and logo.
+
+## Build, deploy and run
+
+### Build, deploy and initialize NFT Smart Contract
+
+```
+cd nft-contract
+./build.sh
+export NFT_CONTRACT=nftmarket.lkskrnk.testnet
+near create-account $NFT_CONTRACT --masterAccount lkskrnk.testnet --initialBalance 5
+near call $NFT_CONTRACT new_default_meta '{"owner_id": "'$NFT_CONTRACT'"}' --accountId $NFT_CONTRACT
+```
+
+### Build and deploy Marketplace Smart Contract
+
+```
+cd marketplace-contract
+yarn asb
+export MARKETPLACE_CONTRACT=marketplace.lkskrnk.testnet
+near create-account $MARKETPLACE_CONTRACT --masterAccount lkskrnk.testnet --initialBalance 5
+near deploy --accountId=$MARKETPLACE_CONTRACT --wasmFile=build/release/near-marketplace-contract.wasm
+```
+
+### Build and deploy UI
+
+If you want to reuse you can fork the repository, clone it, change `homepage` in github to your userName yours and deploy top GithubPages using command:
+
+```
+yarn
+yarn build
+yarn deploy
+```

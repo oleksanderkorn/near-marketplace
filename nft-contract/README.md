@@ -101,7 +101,6 @@ Now we can deploy the compiled contract in this example to your account:
 NFT contract should be initialized before usage. More info about the metadata at [nomicon.io](https://nomicon.io/Standards/NonFungibleToken/Metadata.html). But for now, we'll initialize with the default metadata.
 
     near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
-    near call nftmarket.lkskrnk.testnet new_default_meta '{"owner_id": "nftmarket.lkskrnk.testnet"}' --accountId nftmarket.lkskrnk.testnet
 
 We'll be able to view our metadata right after:
 

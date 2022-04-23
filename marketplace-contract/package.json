@@ -1,7 +1,7 @@
 {
-  "name": "near-marketplace-contract",
+  "name": "marketplace-contract",
   "version": "1.0.0",
-  "description": "Challenge project",
+  "description": "NEAR Development 101 Challenge Project Marketplace Smart Contract",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
