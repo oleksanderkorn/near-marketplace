@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/near-marketplace/static/css/main.bc1aec6e.chunk.css",
-    "main.js": "/near-marketplace/static/js/main.3f4d6e3a.chunk.js",
-    "main.js.map": "/near-marketplace/static/js/main.3f4d6e3a.chunk.js.map",
+    "main.js": "/near-marketplace/static/js/main.e9ea948e.chunk.js",
+    "main.js.map": "/near-marketplace/static/js/main.e9ea948e.chunk.js.map",
     "runtime-main.js": "/near-marketplace/static/js/runtime-main.a90fd1d1.js",
     "runtime-main.js.map": "/near-marketplace/static/js/runtime-main.a90fd1d1.js.map",
     "static/css/2.74ccf3d8.chunk.css": "/near-marketplace/static/css/2.74ccf3d8.chunk.css",
-    "static/js/2.6711cd90.chunk.js": "/near-marketplace/static/js/2.6711cd90.chunk.js",
-    "static/js/2.6711cd90.chunk.js.map": "/near-marketplace/static/js/2.6711cd90.chunk.js.map",
+    "static/js/2.b8ed4ad1.chunk.js": "/near-marketplace/static/js/2.b8ed4ad1.chunk.js",
+    "static/js/2.b8ed4ad1.chunk.js.map": "/near-marketplace/static/js/2.b8ed4ad1.chunk.js.map",
     "static/js/3.1610907a.chunk.js": "/near-marketplace/static/js/3.1610907a.chunk.js",
     "static/js/3.1610907a.chunk.js.map": "/near-marketplace/static/js/3.1610907a.chunk.js.map",
     "index.html": "/near-marketplace/index.html",
     "static/css/2.74ccf3d8.chunk.css.map": "/near-marketplace/static/css/2.74ccf3d8.chunk.css.map",
     "static/css/main.bc1aec6e.chunk.css.map": "/near-marketplace/static/css/main.bc1aec6e.chunk.css.map",
-    "static/js/2.6711cd90.chunk.js.LICENSE.txt": "/near-marketplace/static/js/2.6711cd90.chunk.js.LICENSE.txt",
+    "static/js/2.b8ed4ad1.chunk.js.LICENSE.txt": "/near-marketplace/static/js/2.b8ed4ad1.chunk.js.LICENSE.txt",
     "static/media/bootstrap-icons.css": "/near-marketplace/static/media/bootstrap-icons.c1d7432e.woff",
     "static/media/isolated-monochrome-black.01bb7f7e.svg": "/near-marketplace/static/media/isolated-monochrome-black.01bb7f7e.svg",
     "static/media/isolated-monochrome-white.7da30ddd.svg": "/near-marketplace/static/media/isolated-monochrome-white.7da30ddd.svg"
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.a90fd1d1.js",
     "static/css/2.74ccf3d8.chunk.css",
-    "static/js/2.6711cd90.chunk.js",
+    "static/js/2.b8ed4ad1.chunk.js",
     "static/css/main.bc1aec6e.chunk.css",
-    "static/js/main.3f4d6e3a.chunk.js"
+    "static/js/main.e9ea948e.chunk.js"
   ]
 }
