@@ -23,6 +23,8 @@ function mintNft(nftData: NFTData): ContractPromise {
 }
 
 export function setProduct(product: Product): void {
+  assert(product.price > u128.from(0), "Please, provide product price");
+
   if (context.attachedDeposit < LISTING_FEE) {
     throw new Error(
       "Attached deposit should cover the Listing Fee of 0.1 NEAR"
