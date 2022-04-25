@@ -7,6 +7,8 @@ import {
 import { Product, listedProducts, NFTData, ProductWrapper } from "./model";
 
 const NFT_CONTRACT = "nftmarket.lkskrnk.testnet";
+const MARKETPLACE_CONTRACT = "marketplace.lkskrnk.testnet";
+
 const NFT_CONTRACT_MINT_NFT = "nft_mint";
 const LISTING_FEE = u128.fromString("100000000000000000000000");
 
@@ -21,6 +23,8 @@ function mintNft(nftData: NFTData): ContractPromise {
 }
 
 export function setProduct(product: Product): void {
+  assert(product.price > u128.from(0), "Please, provide product price");
+
   if (context.attachedDeposit < LISTING_FEE) {
     throw new Error(
       "Attached deposit should cover the Listing Fee of 0.1 NEAR"
@@ -62,7 +66,7 @@ export function buyProduct(productId: string): void {
   wrapper.product = product;
 
   const promise = mintNft(nftData).then(
-    "marketplace.lkskrnk.testnet",
+    MARKETPLACE_CONTRACT,
     "onNftMinted",
     wrapper.encode(),
     10_000_000_000_000,

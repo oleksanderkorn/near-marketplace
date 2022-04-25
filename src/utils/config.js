@@ -1,5 +1,4 @@
-const CONTRACT_NAME =
-  process.env.CONTRACT_NAME || "marketplace.lkskrnk.testnet";
+const CONTRACT_NAME ="dev-1650884074093-49020695738067";
 
 function environment(env) {
   switch (env) {
