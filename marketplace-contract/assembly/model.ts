@@ -17,11 +17,13 @@ export class NFTData {
     const nft = new NFTData();
     nft.token_id = `${context.sender}-${product.id}`;
     nft.receiver_id = context.sender;
+
     const meta = new NFTMetadata();
     meta.title = product.name;
     meta.description = product.description;
     meta.media = product.image;
     nft.metadata = meta;
+
     return nft;
   }
 }
@@ -41,6 +43,7 @@ export class Product {
   owner: string;
   sold: u32;
   buyers: string[];
+
   public static fromPayload(payload: Product): Product {
     const product = new Product();
     product.id = payload.id;
@@ -52,6 +55,7 @@ export class Product {
     product.buyers = [];
     return product;
   }
+
   public incrementSoldAmount(): void {
     this.buyers.push(context.sender);
     this.sold = this.sold + 1;

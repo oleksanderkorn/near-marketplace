@@ -4,6 +4,11 @@
   "description": "NEAR Development 101 Challenge Project Marketplace Smart Contract",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "asb",
+    "build:debug": "asb --target debug",
+    "test": "asp --nologo"
+  },
   "devDependencies": {
     "near-sdk-as": "^3.2.3"
   },

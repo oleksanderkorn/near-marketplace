@@ -7,6 +7,8 @@ import {
 import { Product, listedProducts, NFTData, ProductWrapper } from "./model";
 
 const NFT_CONTRACT = "nftmarket.lkskrnk.testnet";
+const MARKETPLACE_CONTRACT = "marketplace.lkskrnk.testnet";
+
 const NFT_CONTRACT_MINT_NFT = "nft_mint";
 const LISTING_FEE = u128.fromString("100000000000000000000000");
 
@@ -62,7 +64,7 @@ export function buyProduct(productId: string): void {
   wrapper.product = product;
 
   const promise = mintNft(nftData).then(
-    "marketplace.lkskrnk.testnet",
+    MARKETPLACE_CONTRACT,
     "onNftMinted",
     wrapper.encode(),
     10_000_000_000_000,
